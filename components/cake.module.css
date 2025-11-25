@@ -1,0 +1,129 @@
+/* components/cake.module.css */
+
+.cakeContainer {
+    display: block;
+    position: relative;
+    margin: -10em auto 0 auto;
+}
+
+/* ============================================== Candle Container */
+/* Holds both candles side-by-side */
+.holder {
+    position: absolute;
+    top: 335px; /* Adjusted to sit correctly on the cake surface */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px; /* Space between candles */
+    z-index: 20;
+}
+
+/* ============================================== Individual Candle */
+.velas {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    position: relative;
+    /* Wider candle to fit the number */
+    width: 20px;
+    height: 40px;
+    /* Drop animation */
+    transform: translateY(-600px); /* Start further up */
+    backface-visibility: hidden;
+    animation: in 500ms 4s ease-out forwards;
+
+    /* Flex to center the number text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1);
+}
+
+/* Slight delay for the second candle so they don't drop at exact same time */
+.velas:nth-child(2) {
+    animation-delay: 4.2s;
+}
+
+.velas:after,
+.velas:before {
+    background: rgba(255, 0, 0, 0.4);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+}
+
+.velas:after {
+    top: 25%;
+    left: 0;
+}
+
+.velas:before {
+    top: 45%;
+    left: 0;
+}
+
+/* ============================================== Candle Number Text */
+.number {
+    color: #ff5e62;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 1;
+}
+
+/* ============================================== Fire */
+.fuego {
+    border-radius: 100%;
+    position: absolute;
+    top: -25px; /* Moved up slightly to clear the wider candle */
+    left: 50%;
+    margin-left: -3px; /* Center the flame (width is ~6px) */
+    width: 6.66666667px;
+    height: 18px;
+    /* Fire opacity 0 until candle drops */
+    opacity: 0;
+    animation: fuego 2s infinite;
+}
+
+/* Fire appears after candles drop */
+.velas:nth-child(1) .fuego { animation-delay: 4.5s; animation-fill-mode: forwards; }
+.velas:nth-child(2) .fuego { animation-delay: 4.7s; animation-fill-mode: forwards; }
+
+/* ============================================== Animations */
+@keyframes fuego {
+    0% {
+        background: rgba(254, 248, 97, 0.5);
+        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        background: rgba(255, 50, 0, 0.1);
+        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+        transform: translateY(-20px) scale(0);
+        opacity: 1;
+    }
+    100% {
+        background: rgba(254, 248, 97, 0.5);
+        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes in {
+    to { transform: translateY(0); }
+}
+
+.text {
+    color: #8b6a60;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.text h1 {
+    font-size: 1.4em;
+}
