@@ -1,9 +1,10 @@
+// app/page.tsx
 import Link from 'next/link';
+import MainBackground from '@/components/main_background'; // Adjust path based on where you created the file
 
 export default function Home() {
   return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-6 text-center text-white">
-
+      <MainBackground>
         {/* Main Container with Glassmorphism effect */}
         <div className="w-full max-w-md rounded-2xl bg-white/10 p-8 shadow-2xl backdrop-blur-md border border-white/20">
 
@@ -35,7 +36,6 @@ export default function Home() {
             </button>
           </Link>
         </div>
-
-      </main>
+      </MainBackground>
   );
 }
