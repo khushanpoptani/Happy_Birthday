@@ -89,6 +89,55 @@
 .velas:nth-child(1) .fuego { animation-delay: 4.5s; animation-fill-mode: forwards; }
 .velas:nth-child(2) .fuego { animation-delay: 4.7s; animation-fill-mode: forwards; }
 
+
+.fuego.out {
+    animation: none; /* Stop the flickering */
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/* ============================================== Wind Animation */
+.windContainer {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 100px;
+    z-index: 50;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.windLine {
+    position: absolute;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    opacity: 0;
+}
+
+/* Generate different wind streaks */
+.windLine:nth-child(1) { top: 20%; left: -50px; width: 100px; animation: blowWind 0.8s ease-out forwards; }
+.windLine:nth-child(2) { top: 50%; left: -80px; width: 150px; animation: blowWind 0.8s 0.1s ease-out forwards; }
+.windLine:nth-child(3) { top: 80%; left: -30px; width: 80px;  animation: blowWind 0.8s 0.2s ease-out forwards; }
+.windLine:nth-child(4) { top: 35%; left: -60px; width: 120px; animation: blowWind 0.8s 0.15s ease-out forwards; }
+.windLine:nth-child(5) { top: 65%; left: -90px; width: 90px;  animation: blowWind 0.8s 0.05s ease-out forwards; }
+
+@keyframes blowWind {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(400px); /* Move past the candles */
+        opacity: 0;
+    }
+}
+
 /* ============================================== Animations */
 @keyframes fuego {
     0% {

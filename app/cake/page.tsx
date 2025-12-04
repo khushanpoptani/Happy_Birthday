@@ -13,7 +13,7 @@ export default function CakePage() {
             <CakePageBackground />
 
             {/* 2. THE CAKE ANIMATION */}
-            <div className="relative z-10 scale-125 md:scale-150 mt-20">
+            <div className="relative z-10 scale-125 md:scale-150 -translate-y-10">
                 <Cake />
             </div>
 
